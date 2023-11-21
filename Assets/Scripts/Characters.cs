@@ -46,6 +46,13 @@ public class Characters : MonoBehaviour
                 while (manager.pierreShop.isOpen)
                     yield return null;
             }
+        } else if (nodes[^1].isFarmPlayer)
+        {
+            if (!manager.playerInFarm)
+                manager.StartFarmPlayer(this);
+
+            while (manager.playerInFarm)
+                yield return null;
         }
 
         yield return new WaitForSeconds(2);

@@ -25,6 +25,8 @@ public class Node : MonoBehaviour
     [SerializeField]
     private bool isPierreShop = false;
 
+    public bool isFarmPlayer = false;
+
     public Dictionary<Node, float> Edges
     {
         get { return edges; }

@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
+    public GameTree gameTree;
+    public CanvasGroup fakeLoad;
+    public bool playerInFarm = false;
+
     public TextMeshProUGUI debug;
 
     [SerializeField]
@@ -52,20 +56,40 @@ public class Manager : MonoBehaviour
         graph ??= new List<Node>();
 
         SetEdges(this);
+    }
 
-        debug.text += "Node 52: " + graph[52].transform.localPosition + "\n";
-        debug.text += "Node 49: " + graph[49].transform.localPosition + "\n";
-        float result = DistanceNode.Distance(graph[52].transform.localPosition, graph[49].transform.localPosition, this);
-        debug.text += "result2: " + result + "\n";
+    public void StartFarmPlayer(Characters player)
+    {
+        playerInFarm = true;
+        gameTree.player = player;        
+        StartCoroutine(FarmPlayer());
+    }
 
-        foreach (Node node in graph)
-        {
-            if (node != null && node.Edges != null && node.Edges.Count == 0)
-                Debug.Log(node.gameObject.name);
+    IEnumerator FarmPlayer()
+    {
+        fakeLoad.LeanAlpha(1, .5f);
+        yield return new WaitForSeconds(.5f);
+        gameTree.ArrivedFarm();
+        game.transform.localPosition = new Vector3(1920, game.transform.localPosition.y);
+        gameTree.transform.localPosition = new Vector3(0, gameTree.transform.localPosition.y);
+        fakeLoad.LeanAlpha(0, .5f);
+    }
 
-            if (node.Edges == null)
-                Debug.Log(node.gameObject.name);
-        }
+    public void ExitFarm()
+    {
+        gameTree.stopMove = true;
+        StartCoroutine(FarmExit());
+    }
+
+    IEnumerator FarmExit()
+    {
+        fakeLoad.LeanAlpha(1, .5f);
+        yield return new WaitForSeconds(.5f);
+        game.transform.localPosition = new Vector3(0, game.transform.localPosition.y);
+        gameTree.transform.localPosition = new Vector3(1920, gameTree.transform.localPosition.y);
+        gameTree.ResetPlayer();
+        fakeLoad.LeanAlpha(0, .5f);
+        playerInFarm = false;
     }
 
     void UpdateSpeedValue(float newValue)
