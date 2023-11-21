@@ -50,6 +50,11 @@ public class Tree : MonoBehaviour
         target.LeanAlpha(1, .5f);
     }
 
+    public void CallHideTarget()
+    {
+        StartCoroutine(HideTarget());
+    }
+
     IEnumerator HideTarget()
     {
         yield return new WaitForSeconds(2f);

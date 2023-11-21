@@ -38,7 +38,6 @@ public class Market : MonoBehaviour
             ItemsMarket item = marketList[i];
             if (item.isActive)
             {
-                print(item.price);
                 queue.Enqueue(item);
             }
         }

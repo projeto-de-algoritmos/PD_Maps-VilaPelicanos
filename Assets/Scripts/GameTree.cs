@@ -43,7 +43,7 @@ public class GameTree : MonoBehaviour
     public Image imagePlayer;
 
     private Transform initialParent;
-    private RectTransform initialRectTransform;
+    private Vector3 initialPosition;
 
     private bool inMove = false;
     public bool stopMove = false;
@@ -58,7 +58,7 @@ public class GameTree : MonoBehaviour
         imagePlayer.sprite = player.GetComponent<Image>().sprite;
 
         initialParent = player.transform.parent.transform;
-        initialRectTransform = player.transform.GetComponent<RectTransform>();
+        initialPosition = player.transform.localPosition;
 
         player.transform.SetParent(startParent);
         player.transform.localPosition = startPosition;
@@ -96,7 +96,7 @@ public class GameTree : MonoBehaviour
                 }
             }
             
-                        player.transform.SetParent(targetTrees[index].transform);
+            player.transform.SetParent(targetTrees[index].transform);
             player.transform.localPosition = new Vector3(30, -40);
             targetTrees[index].GetComponent<Tree>().FallTree();
             energySlider.value--;
@@ -112,13 +112,26 @@ public class GameTree : MonoBehaviour
             targetTrees.RemoveAt(index);
         }
 
+        foreach (GameObject tree in targetTrees)
+        {
+            tree.GetComponent<Tree>().CallHideTarget();
+            if (!sortedTrees.Contains(tree))
+                sortedTrees.Add(tree);
+        }
+
+        if (targetTrees.Count > 0)
+            OrderTrees();
+
+        targetTrees.Clear();
+
         inMove = false;
     }
 
     public void ResetPlayer()
     {
         player.transform.SetParent(initialParent);
-        player.GetComponent<RectTransform>().localPosition = initialRectTransform.localPosition;
+        player.transform.localPosition = initialPosition;
+        player.transform.localScale = Vector3.one;
     }
 
     public void GenerateTrees()
@@ -163,6 +176,12 @@ public class GameTree : MonoBehaviour
 
     void ResetSpawnedTrees()
     {
+        if (player != null)
+        {
+            player.transform.SetParent(startParent);
+            player.transform.localPosition = startPosition;
+        }
+        
         int childCount = parentTree.transform.childCount;
 
         for (int i = 0; i < childCount; i++)
@@ -275,6 +294,8 @@ public class GameTree : MonoBehaviour
             spawnedTrees[i].transform.SetSiblingIndex(i);
         }
     }
+
+    #region DC - Algoritm
 
     void FindClosestTrees()
     {
@@ -405,6 +426,9 @@ public class GameTree : MonoBehaviour
         return closestPair;
     }
 
+    #endregion
+
+    #region DC - Gabarito
     void TemplateClosestPair()
     {
         if (sortedTrees.Count < 2)
@@ -441,4 +465,6 @@ public class GameTree : MonoBehaviour
             Debug.LogWarning("Não foi possível encontrar as duas árvores mais próximas.");
         }
     }
+
+    #endregion
 }
