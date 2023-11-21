@@ -4261,7 +4261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7779,7 +7779,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 600}
+  m_SizeDelta: {x: 850, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305142964
 MonoBehaviour:
@@ -20025,8 +20025,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Existem muitas arvores no seu terreno, mas sem problemas!! \n\nPara te
-    ajudar a poupar energia enquanto poda, criamos um algoritmo que te mostra as
-    arvores mais proximas.\n\nCada arvore que voce poda, gasta 5 de energia."
+    ajudar a poupar energia, criamos uma funcionalidade que te ajuda a remover as
+    2 arvores mais proximas entre si da fazenda, ja que elas atrapalham o caminho
+    duurante a locomocao pelo terreno.\n\nCada arvore que voce poda, gasta 5 de energia."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6b1dd981dd830247a126d956da10c2d, type: 2}
   m_sharedMaterial: {fileID: -2024466616429609585, guid: b6b1dd981dd830247a126d956da10c2d, type: 2}
@@ -29249,7 +29250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

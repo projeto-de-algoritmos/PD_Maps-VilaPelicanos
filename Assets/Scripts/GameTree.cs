@@ -123,6 +123,8 @@ public class GameTree : MonoBehaviour
 
     public void GenerateTrees()
     {
+        if (inMove) return;
+
         ResetSpawnedTrees();
         SpawnTrees();
         OrderTrees();
@@ -161,12 +163,16 @@ public class GameTree : MonoBehaviour
 
     void ResetSpawnedTrees()
     {
-        foreach (GameObject tree in spawnedTrees)
+        int childCount = parentTree.transform.childCount;
+
+        for (int i = 0; i < childCount; i++)
         {
-            Destroy(tree);
+            GameObject child = parentTree.transform.GetChild(0).gameObject;
+            DestroyImmediate(child);
         }
 
         spawnedTrees.Clear();
+        sortedTrees.Clear();
         targetTrees.Clear();
     }
 
