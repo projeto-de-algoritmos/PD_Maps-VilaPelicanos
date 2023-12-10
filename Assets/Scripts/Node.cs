@@ -26,6 +26,7 @@ public class Node : MonoBehaviour
     private bool isPierreShop = false;
 
     public bool isFarmPlayer = false;
+    public bool isSchedulaGame = false;
 
     public Dictionary<Node, float> Edges
     {

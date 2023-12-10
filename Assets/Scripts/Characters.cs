@@ -54,6 +54,14 @@ public class Characters : MonoBehaviour
             while (manager.playerInFarm)
                 yield return null;
         }
+        else if (nodes[^1].isSchedulaGame)
+        {
+            if (!manager.inSchedulaGame)
+                manager.StartSchedulaGame();
+
+            while (manager.inSchedulaGame)
+                yield return null;
+        }
 
         yield return new WaitForSeconds(2);
 

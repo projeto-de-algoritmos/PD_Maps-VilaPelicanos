@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Schedula : MonoBehaviour
 {
+    public Manager manager;
     public List<Task> tasks = new();
     List<Task> activeTasks = new();
 
@@ -60,5 +61,11 @@ public class Schedula : MonoBehaviour
             else
                 return Tuple.Create(notTake, notTakeList);
         }
+    }
+
+    public void ExitGame()
+    {
+        if (manager.inSchedulaGame)
+            manager.ExitSchedula();
     }
 }

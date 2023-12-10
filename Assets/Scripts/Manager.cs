@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
+    public GameObject schedulaObj;
+
     public GameTree gameTree;
     public CanvasGroup fakeLoad;
     public bool playerInFarm = false;
@@ -43,6 +45,7 @@ public class Manager : MonoBehaviour
     public int finishChars = 0;
     public TextMeshProUGUI totalDistance01;
     public TextMeshProUGUI totalDistance02;
+    public bool inSchedulaGame = false;
 
     [SerializeField]
     public int[][] matrixAdj;
@@ -56,6 +59,34 @@ public class Manager : MonoBehaviour
         graph ??= new List<Node>();
 
         SetEdges(this);
+    }
+
+    public void StartSchedulaGame()
+    {
+        inSchedulaGame = true;
+        StartCoroutine(SchedulaGame());
+    }
+
+    IEnumerator SchedulaGame()
+    {
+        fakeLoad.LeanAlpha(1, .5f);
+        yield return new WaitForSeconds(.5f);
+        schedulaObj.SetActive(true);
+        fakeLoad.LeanAlpha(0, .5f);
+    }
+
+    public void ExitSchedula()
+    {
+        inSchedulaGame = false;
+        StartCoroutine(ExitSchedulaGame());
+    }
+
+    IEnumerator ExitSchedulaGame()
+    {
+        fakeLoad.LeanAlpha(1, .5f);
+        yield return new WaitForSeconds(.5f);
+        schedulaObj.SetActive(false);
+        fakeLoad.LeanAlpha(0, .5f);        
     }
 
     public void StartFarmPlayer(Characters player)
