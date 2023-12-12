@@ -17,6 +17,8 @@ A lojinha do Pierre agora dispõe de uma nova forma de se fazer compras! O habit
 
 Um grande problema identificado pela equipe do Maps da Vila Pelicanos é que existem muitas árvores na nova fazenda que atrapalham o caminho durante a locomoção pelo terreno, em conjunto a isso quem precisa as limpar comumente não possui muita energia então precisa ser o mais eficiente possível. Para ajudar a poupar energia, criamos uma funcionalidade que indica os pares de árvores mais próximas entre si da fazenda que podem atrapalhar o caminho. Cada árvore que voce poda, gasta 5 de energia.
 
+Depois de um tempo jogando, os habitantes liberaram o Centro comunitário, onde nele é possivel realizar algumas tarefas que faltam para melhorar a vila! A tarefa do habitante é escolher os pesos e definir os horários de inicio e fim para que os Junimos o ajudem a escolher a melhor ordem possivel!
+
 Video explicando o projeto se encontra no arquivo. `Explicacao-do-projeto.mp4`.
 
 ## Screenshots
@@ -42,6 +44,12 @@ Targets de pontos mais proximos
 ![imagem1](Assets/Images/Prints/10.png)
 Fazenda após algoritmo executado algumas vezes
 ![imagem1](Assets/Images/Prints/11.png)
+Inicio do Centro Comunitário
+![imagem1](Assets/Images/Prints/12.png)
+Configurações desejadas selecionadas
+![imagem1](Assets/Images/Prints/13.png)
+Melhor combinação escolhida pelo Junimo
+![imagem1](Assets/Images/Prints/14.png)
 
 ## Instalação 
 
@@ -70,3 +78,7 @@ Para comprar na lojinha do Pierre, basta clicar no campo escrito Moedas e digita
 ### Fazenda
 
 O objetivo do jogador dentro da fazenda é limpar seu terreno, mas para isso deve-se seguir uma lógica de limpar sempre as 2 arvores mais proximas entre si, pois elas acabam atrapalhando sua locomoção. Para realizar essa tarefa o jogador precisa ter 5 de energia para cada arvore que ele deseja podar. Também é possivel customizar a geração de arvores no terreno para fins de teste e diversão!
+
+### Centro Comunitário
+
+Dentro do Centro comunitário o jogador pode escolher os pesos e definir os horarios de inicio e fim das atividades, com isso o Junimo organiza para você as tarefas que são possiveis de serem realizadas te dando a melhor recompensa por peso possivel!
