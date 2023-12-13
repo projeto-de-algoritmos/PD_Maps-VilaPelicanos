@@ -2,7 +2,7 @@
 # Maps da Vila Pelicanos 
 
 **Número da Lista**: 10<br>
-**Conteúdo da Disciplina**: Dividir e Conquistar<br>
+**Conteúdo da Disciplina**: Programação Dinâmica <br>
 
 ## Alunos
 |Matrícula | Aluno |
